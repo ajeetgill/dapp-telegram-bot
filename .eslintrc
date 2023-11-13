@@ -1,6 +1,5 @@
 {
   "env": {
-    "browser": true,
     "es2021": true,
     "node": true
   },
@@ -17,6 +16,7 @@
     "quotes": ["warn", "double", { "allowTemplateLiterals": true }],
     "semi": ["error", "always"],
     "no-unused-vars": ["warn"],
-    "@typescript-eslint/no-unused-vars": ["warn"]
+    "@typescript-eslint/no-unused-vars": ["warn"],
+    "no-undef": ["error"]
   }
 }

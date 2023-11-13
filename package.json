@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node --extensions '.js,.ts' src/index",
+    "start": "nodemon --exec babel-node --extensions '.js,.ts,.mjs' src/index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -24,6 +24,8 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "dotenv": "^16.3.1"
+    "axios": "^1.6.1",
+    "dotenv": "^16.3.1",
+    "telegraf": "^4.15.0"
   }
 }
