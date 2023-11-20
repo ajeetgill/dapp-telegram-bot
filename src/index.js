@@ -28,10 +28,20 @@ exclusive 200% deposit bonus. Hurry, it's available
 for a LIMITED TIME ONLY! <a href="google.com">See terms and details 
 here.</a>`,
     Markup.inlineKeyboard([
-      Markup.button.callback("Play Now ▶️", "launch_game"),
-      Markup.button.callback("Git Details", "getanother"),
+      Markup.button.callback("Launch Web App", "webapp"),
+      Markup.button.callback("Get Git Details", "getGitDetails"),
     ])
   );
+});
+
+bot.command("web", (ctx) => {
+  const URL = process.env.WEB_APP_URL; // generated using ngrok
+  // ctx.reply("URL  : " + URL);
+  ctx.reply("🔥 Check Our website", {
+    reply_markup: {
+      inline_keyboard: [[Markup.button.webApp("Visit", URL)]],
+    },
+  });
 });
 
 // bot listens for '/git' command and then asks for github username, searchs the details and returns the details in a well formated html format
@@ -39,7 +49,7 @@ bot.command("git", (ctx) => {
   ctx.reply("Please enter a GitHub username:");
   bot.on("text", async (ctx) => {
     const username = ctx.message.text;
-    console.log(`Username: ${username}`);
+    // console.log(`Username: ${username}`);
     try {
       const response = await axios.get(
         `https://api.github.com/users/${username}`
@@ -51,7 +61,7 @@ bot.command("git", (ctx) => {
 Since: ${created_at}
 public repos: ${public_repos}`,
         Markup.inlineKeyboard([
-          Markup.button.callback("Git Details", "getanother"),
+          Markup.button.callback("Git Details", "getGitDetails"),
         ])
       );
     } catch (error) {
@@ -60,19 +70,25 @@ public repos: ${public_repos}`,
   });
 });
 
-bot.action("launch_game", (ctx) => {
-  ctx.reply("Launching game...");
+bot.action("webapp", (ctx) => {
+  const URL = process.env.WEB_APP_URL; // generated using ngrok
+  ctx.reply("URL  : " + URL);
+  ctx.reply("🔥 Check Our website", {
+    reply_markup: {
+      inline_keyboard: [[Markup.button.webApp("Visit", URL)]],
+    },
+  });
 });
-bot.action("getanother", (ctx) => {
-  ctx.reply("username:");
+bot.action("getGitDetails", (ctx) => {
+  ctx.reply("Please enter a GitHub username:");
   bot.on("text", async (ctx) => {
     // returns the telegram userid for the current user
     // const userid = ctx.message.from.id;
     try {
-      console.log(`ctx`);
-      console.log(ctx);
+      // console.log(`ctx`);
+      // console.log(ctx);
       const username = ctx.message.text;
-      console.log(`Second Username    : ${username}`);
+      // console.log(`Second Username    : ${username}`);
       const response = await axios.get(
         `https://api.github.com/users/${username}`
       );
