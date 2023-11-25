@@ -28,6 +28,15 @@ To run the project, use the following command:
 npm start
 ```
 
+## Further Curiousity Ideas
+
+- [ ] Make the bot compatible with groups
+- [ ] Integrate bot with website login
+- [ ] What happens if two bot codes are running at the same time
+  - [ ] And what if both of those code are programmed to do different things for same /command?
+- [ ] Connect my website with a webapp
+  - [ ] Have multiple webapps, OR make it generic, like ask for a URL and user should be able to visit it at the very least
+
 ## Questions
 
 - [x] Does port selection doesn't matter for telegram bot?
