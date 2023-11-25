@@ -5,7 +5,7 @@ import path from "path";
 
 // Load environment variables from .env file
 dotenv.config();
-
+const URL = process.env.WEB_APP_URL; // generated using ngrok
 const bot = new Telegraf(process.env.BOT_TOKEN);
 
 bot.start((ctx) => {
@@ -35,8 +35,7 @@ here.</a>`,
 });
 
 bot.command("web", (ctx) => {
-  const URL = process.env.WEB_APP_URL; // generated using ngrok
-  // ctx.reply("URL  : " + URL);
+  ctx.reply("URL  : " + URL);
   ctx.reply("🔥 Check Our website", {
     reply_markup: {
       inline_keyboard: [[Markup.button.webApp("Visit", URL)]],
@@ -71,7 +70,6 @@ public repos: ${public_repos}`,
 });
 
 bot.action("webapp", (ctx) => {
-  const URL = process.env.WEB_APP_URL; // generated using ngrok
   ctx.reply("URL  : " + URL);
   ctx.reply("🔥 Check Our website", {
     reply_markup: {
